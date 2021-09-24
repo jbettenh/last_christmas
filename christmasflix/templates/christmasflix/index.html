@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>The Best Christmas Movies</title>
+    </head>
+    <body>
+        {% if latest_movies_list %}
+            <ul>
+            {% for movie in  latest_movies_list %}
+                <li><a href="/christmasflix/{{ movielist.id }}/">{{ movielist.name }}</a></li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No movies are available.</p>
+        {% endif %}
+    </body>
+</html>
