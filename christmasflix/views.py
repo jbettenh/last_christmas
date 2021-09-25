@@ -19,13 +19,8 @@ def detail(request, movielist_id):
     return HttpResponse("You're looking at the list for %s." % view_lists)
     """
     #view_movies = get_object_or_404(MovieList, pk=movielist_id)
-    view_movies = Movie.objects.get(id=movielist_id)
-    template = loader.get_template('christmasflix/detail.html')
-    context = {
-        'latest_question_list': view_movies,
-    }
-    return HttpResponse(template.render(context, request))
-    #return render(request, 'christmasflix/detail.html', {'Lists': view_movies})
+    view_movies = MovieList.objects.get(id=movielist_id)
+    return render(request, 'christmasflix/detail.html', {'movies': view_movies})
 
 
 
