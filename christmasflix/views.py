@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 
 from .models import MovieList, Movie
@@ -10,8 +11,12 @@ def index(request):
 
 
 def detail(request, movielist_id):
+    """
     movie_list = get_object_or_404(MovieList, pk=movielist_id)
     return render(request, 'christmasflix/detail.html', {'Lists': movie_list})
+    """
+    view_lists = get_object_or_404(MovieList, pk=movielist_id)
+    return HttpResponse("You're looking at the list for %s." % view_lists)
 
 
 def results(request, movielist_id):
