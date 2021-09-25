@@ -11,7 +11,7 @@
         {% if movie_lists %}
             <ul>
             {% for movie in movie_lists %}
-                <li><a href="/christmasflix/{{ movielist.id }}/">{{ movie }}</a></li>
+                <li><a href="/christmasflix/{{ movie.id }}/">{{ movie }}</a></li>
             {% endfor %}
             </ul>
         {% else %}
