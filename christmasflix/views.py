@@ -12,17 +12,9 @@ def index(request):
 
 
 def detail(request, movielist_id):
-    # view list of choices
-    """
-    movie_list = get_object_or_404(MovieList, pk=movielist_id)
-    return render(request, 'christmasflix/detail.html', {'Lists': movie_list})
-    return HttpResponse("You're looking at the list for %s." % view_lists)
-    """
     #view_movies = get_object_or_404(MovieList, pk=movielist_id)
     view_movies = MovieList.objects.get(id=movielist_id)
     return render(request, 'christmasflix/detail.html', {'movies': view_movies})
-
-
 
 
 def results(request, movielist_id):
