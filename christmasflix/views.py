@@ -1,7 +1,6 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
-from .models import MovieList
+from .models import MovieList, Movie
 
 
 def index(request):
@@ -10,14 +9,12 @@ def index(request):
     return render(request, 'christmasflix/index.html', context)
 
 
-def detail(request, movies_id):
-    return HttpResponse("You're looking at lists %s" % movies_id)
+def detail(request, movielist_id):
+    movie_list = get_object_or_404(MovieList, pk=movielist_id)
+    return render(request, 'christmasflix/detail.html', {'Lists': movie_list})
 
 
-def results(request, movies_id):
-    response = "You're looking at the results of list %s."
-    return HttpResponse(response % movies_id)
-
-
-def vote(request, movies_id):
-    return HttpResponse("You're voting on question %s." % movies_id)
+def results(request, movielist_id):
+    #view_movies = get_object_or_404(MovieList, pk=movielist_id)
+    view_movies = MovieList.objects.get(id=movielist_id)
+    return render(request, 'christmasflix/results.html', {'movies': view_movies})
