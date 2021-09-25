@@ -7,10 +7,11 @@
         <title>The Best Christmas Movies</title>
     </head>
     <body>
-        {% if latest_movies_list %}
+        <h2>Movie Lists</h2>
+        {% if movie_lists %}
             <ul>
-            {% for movie in  latest_movies_list %}
-                <li><a href="/christmasflix/{{ movielist.id }}/">{{ movielist.name }}</a></li>
+            {% for movie in movie_lists %}
+                <li><a href="/christmasflix/{{ movielist.id }}/">{{ movie }}</a></li>
             {% endfor %}
             </ul>
         {% else %}

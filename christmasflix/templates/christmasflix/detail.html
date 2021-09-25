@@ -7,11 +7,12 @@
         <title>The Best Christmas Movies</title>
     </head>
     <body>
-    <h1>{{ movielist.name }}</h1>
-        <ul>
-        {% for movie in movie.movie_set.all %}
-            <li>{{ movie.title }}</li>
-        {% endfor %}
-        </ul>
+        <h1>{{ movielist.name }}</h1>
+        <p>{{ view_movies }}</p>
+            <ul>
+                {% for movie in movielist.movie_set.all %}
+                <li>{{ movie.title }}</li>
+                {% endfor %}
+            </ul>
     </body>
 </html>
