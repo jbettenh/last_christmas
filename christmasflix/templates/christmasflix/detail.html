@@ -1,8 +1,8 @@
 {% extends 'christmasflix/base.html' %}
-{% block header_text %}Your Movie List{% endblock %}
+{% block header_text %} {{ movies }}'s Christmas Movie List{% endblock %}
 
 {% block table %}
-        <p>{{ movies }}</p>
+        <h1></h1>
             <ul>
                 {% for movie in movies.movie_set.all %}
                 <li>{{ movie.title }}</li>

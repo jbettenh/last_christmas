@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>The Best Christmas Movies</title>
-    </head>
-    <body>
-        <h2>Movie Lists</h2>
+{% extends 'christmasflix/base.html' %}
+{% block header_text %} The Best Christmas Movie Lists{% endblock %}
+
+{% block table %}
         {% if movie_lists %}
             <ul>
             {% for movie in movie_lists %}
-                <li><a href="/christmasflix/{{ movie.id }}/">{{ movie }}</a></li>
+                <li><a href="{% url 'christmasflix:detail' movie.id %}">{{ movie }}</a></li>
             {% endfor %}
             </ul>
         {% else %}
             <p>No movies are available.</p>
         {% endif %}
-    </body>
-</html>
+{% endblock %}
