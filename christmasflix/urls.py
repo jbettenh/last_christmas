@@ -1,9 +1,7 @@
 from django.urls import path
 
 from . import views
-"""
-   path('<int:movielist_id>/', views.detail, name='detail'),
-   """
+
 app_name = 'christmasflix'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),

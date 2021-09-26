@@ -4,12 +4,6 @@ from django.views import generic
 
 from .models import MovieList, Movie
 
-"""
-def detail(request, movielist_id):
-    view_movies = get_object_or_404(MovieList, pk=movielist_id)
-    return render(request, 'christmasflix/detail.html', {'movies': view_movies})
-"""
-
 
 class IndexView(generic.ListView):
     template_name = 'christmasflix/index.html'
@@ -21,7 +15,9 @@ class IndexView(generic.ListView):
 
 class DetailView(generic.DetailView):
     model = MovieList
+    context_object_name = 'movies'
     template_name = 'christmasflix/detail.html'
+
 
 def results(request):
     view_movies = Movie.objects.all()
@@ -31,5 +27,4 @@ def results(request):
 def add_movie(request, movielist_id):
     current_list = MovieList.objects.get(id=movielist_id)
     Movie.objects.create(title=request.POST['movie_title'], movielist=current_list)
-    #return redirect(f'/christmasflix/{current_list.id}')
     return redirect(reverse('christmasflix:detail', args=(current_list.id,)))
