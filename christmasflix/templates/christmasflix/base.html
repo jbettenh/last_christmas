@@ -6,11 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>The Best Christmas Movies</title>
-        <link href="/static/base.css" rel="stylesheet">
     </head>
     <body>
         <h1>{% block header_text %}{% endblock %}</h1>
         {% block table %}
         {% endblock %}
+        <form method="POST" action="{% block form_action %}}{% endblock %}">
+            <input name="movie_title"
+                   id="id_new_movie"
+                   placeholder="Enter a another movie"/>
+            {% csrf_token %}
+        </form>
     </body>
 </html>

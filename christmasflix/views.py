@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .models import MovieList, Movie
 
@@ -17,3 +17,9 @@ def detail(request, movielist_id):
 def results(request):
     view_movies = Movie.objects.all()
     return render(request, 'christmasflix/results.html', {'movies': view_movies})
+
+
+def add_movie(request, movielist_id):
+    current_list = MovieList.objects.get(id=movielist_id)
+    Movie.objects.create(title=request.POST['movie_title'], movielist=current_list)
+    return redirect(f'/christmasflix/{current_list.id}')
