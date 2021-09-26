@@ -19,9 +19,10 @@ class DetailView(generic.DetailView):
     template_name = 'christmasflix/detail.html'
 
 
-def results(request):
-    view_movies = Movie.objects.all()
-    return render(request, 'christmasflix/results.html', {'movies': view_movies})
+class MoviesView(generic.ListView):
+    model = Movie
+    context_object_name = 'movies'
+    template_name = 'christmasflix/movies.html'
 
 
 def add_movie(request, movielist_id):
