@@ -38,3 +38,10 @@ class DetailViewTest(TestCase):
         response = self.client.get(f'/christmasflix/{my_list.id}/')
 
         self.assertTemplateUsed(response, 'christmasflix/detail.html')
+
+
+class MovieViewTest(TestCase):
+    def test_movies_uses_template(self):
+        response = self.client.get(f'/christmasflix/movies/')
+
+        self.assertTemplateUsed(response, 'christmasflix/movies.html')
