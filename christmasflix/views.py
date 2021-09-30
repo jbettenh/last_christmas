@@ -6,8 +6,8 @@ from .models import MovieList, Movie
 
 
 class IndexView(generic.ListView):
-    template_name = 'christmasflix/index.html'
     context_object_name = 'movie_lists'
+    template_name = 'christmasflix/index.html'
 
     def get_queryset(self):
         return MovieList.objects.all()
