@@ -13,6 +13,17 @@ class IndexView(generic.ListView):
         return MovieList.objects.all()
 
 
+def add_list(request):
+    new_list = MovieList.objects.create(name=request.POST['movie_title'])
+    return redirect(reverse('christmasflix:detail', args=(new_list.id,)))
+
+
+def add_movie(request, movielist_id):
+    current_list = MovieList.objects.get(id=movielist_id)
+    Movie.objects.create(title=request.POST['movie_title'], movielist=current_list)
+    return redirect(reverse('christmasflix:detail', args=(current_list.id,)))
+
+
 class DetailView(generic.DetailView):
     model = MovieList
     context_object_name = 'movies'
@@ -25,7 +36,4 @@ class MoviesView(generic.ListView):
     template_name = 'christmasflix/movies.html'
 
 
-def add_movie(request, movielist_id):
-    current_list = MovieList.objects.get(id=movielist_id)
-    Movie.objects.create(title=request.POST['movie_title'], movielist=current_list)
-    return redirect(reverse('christmasflix:detail', args=(current_list.id,)))
+

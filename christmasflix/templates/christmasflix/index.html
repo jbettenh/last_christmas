@@ -1,6 +1,7 @@
 {% extends 'christmasflix/base.html' %}
 
-{% block header_text %} The Best Christmas Movie Lists{% endblock %}
+{% block header_text %}Start a new movie list{% endblock %}
+{% block form_action %}/christmasflix/new/{% endblock %}
 
 {% block table %}
         {% if movie_lists %}
@@ -10,7 +11,7 @@
             {% endfor %}
             </ul>
         {% else %}
-            <p>No movies are available.</p>
+            <p>No lists are available.</p>
         {% endif %}
 
         <a href="{% url 'christmasflix:movies' %}">See all movies</a></li>

@@ -5,7 +5,7 @@ class MovieList(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50, default='')
     description = models.CharField(max_length=200, default='')
-    created_date = models.DateTimeField('date created', default="1900-01-01 06:00")
+    created_date = models.DateTimeField('date created', auto_now_add=True)
 
     list_filter = ['created_date']
 
