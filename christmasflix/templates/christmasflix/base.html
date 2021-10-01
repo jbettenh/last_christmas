@@ -19,7 +19,7 @@
                                 <input name="movie_title"
                                        id="id_new_movie"
                                        class="form-control input-lg"
-                                       placeholder="Enter a another movie"/>
+                                       placeholder="{% block form_placeholder %}}{% endblock %}"/>
                                 {% csrf_token %}
                             </form>
                     </div>

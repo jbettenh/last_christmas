@@ -1,5 +1,6 @@
 {% extends 'christmasflix/base.html' %}
 {% block header_text %} {{ movies }}'s Christmas Movie List{% endblock %}
+{% block form_placeholder %}Enter a another movie{% endblock %}
 {% block form_action %}/christmasflix/{{ movies.id }}/add_movie/{% endblock %}
 
 {% block table %}
