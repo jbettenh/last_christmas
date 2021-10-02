@@ -4,7 +4,6 @@
 {% block form_action %}/christmasflix/{{ movies.id }}/add_movie/{% endblock %}
 
 {% block table %}
-        <h1></h1>
             <ul>
                 {% for movie in movies.movie_set.all %}
                 <li>{{ movie.title }}</li>
