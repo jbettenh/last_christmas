@@ -15,3 +15,7 @@
             <p>No lists are available.</p>
         {% endif %}
 {% endblock %}
+
+{% block nav %}
+    <a class="btn btn-success" href="{% url 'christmasflix:movies' %}" role="button">See all movies</a>
+{% endblock %}

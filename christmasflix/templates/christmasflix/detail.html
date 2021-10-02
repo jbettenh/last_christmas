@@ -11,3 +11,8 @@
                 {% endfor %}
             </ul>
 {% endblock %}
+
+{% block nav %}
+    <a class="btn btn-success" href="{% url 'christmasflix:movies' %}" role="button">See all movies</a>
+    <a class="btn btn-success" href="{% url 'christmasflix:index' %}" role="button">Back to Home</a>
+{% endblock %}

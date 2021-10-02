@@ -1,1 +1,11 @@
+{% extends 'christmasflix/base.html' %}
+{% block header_text %}All Movies{% endblock %}
+{% block form_placeholder %}Enter a another movie{% endblock %}
+
+{% block table %}
 {{ movies }}
+{% endblock %}
+
+{% block nav %}
+    <a class="btn btn-success" href="{% url 'christmasflix:index' %}" role="button">Back to Home</a>
+{% endblock %}

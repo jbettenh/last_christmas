@@ -32,9 +32,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <a class="btn btn-success" href="{% url 'christmasflix:movies' %}" role="button">See all movies</a>
-                </div>
+
+                    <div class="col-md-8 col-md-offset-2">
+                        {% block nav %}
+                        {% endblock %}
+                    </div>
+
             </div>
         </div>
     </body>
