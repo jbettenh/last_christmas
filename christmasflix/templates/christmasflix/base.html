@@ -10,35 +10,39 @@
         <link href="{% static 'christmasflix/base.css' %}" rel="stylesheet">
     </head>
     <body>
-       <main role="main" class="inner cover">
-           <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="text-center">
-                            <h1 class="cover-heading lead">{% block header_text %}{% endblock %}</h1>
-                                <form method="POST" action="{% block form_action %}}{% endblock %}">
-                                    <input name="movie_title"
-                                        id="id_new_movie"
-                                        class="form-control input-lg"
-                                        placeholder="{% block form_placeholder %}}{% endblock %}"/>
-                                    {% csrf_token %}
-                                </form>
-                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        {% block table %}
-                        {% endblock %}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        {% block nav %}
-                        {% endblock %}
+        <div class="container">
+            <div class="row my-6">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="text-center">
+                        <h1 class="cover-heading lead">{% block header_text %}{% endblock %}</h1>
                     </div>
                 </div>
             </div>
-       </main>
+            <div class="row my-3">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="text-center">
+                        <form method="POST" action="{% block form_action %}}{% endblock %}">
+                            <input name="movie_title"
+                                   id="id_new_movie"
+                                   class="form-control input-lg"
+                                   placeholder="{% block form_placeholder %}}{% endblock %}"/>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-md-8 col-md-offset-2">
+                    {% block table %}
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-md-8 col-md-offset-2">
+                    {% block nav %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
     </body>
 </html>
