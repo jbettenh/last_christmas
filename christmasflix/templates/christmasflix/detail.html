@@ -6,7 +6,6 @@
 {% block table %}
             <ul>
                 {% for movie in movies.movie_set.all %}
-                <li>{{ movie.title }}</li>
                 <img src="{{ movie.img_url }}" alt="{{ movie.title }}">
                 {% endfor %}
             </ul>
