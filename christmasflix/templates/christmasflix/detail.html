@@ -7,6 +7,7 @@
             <ul>
                 {% for movie in movies.movie_set.all %}
                 <li>{{ movie.title }}</li>
+                <img src="https://m.media-amazon.com/images/M/MV5BMzUxNzkzMzQtYjIxZC00NzU0LThkYTQtZjNhNTljMTA1MDA1L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg" alt="{{ movie.title }}">
                 {% endfor %}
             </ul>
 {% endblock %}
