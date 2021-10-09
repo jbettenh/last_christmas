@@ -1,2 +1,2 @@
-# last_christmas
+# Christmasflix
 Django app to create movie lists
