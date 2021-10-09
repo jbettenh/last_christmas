@@ -4,3 +4,4 @@ venv/
 virtualenv/
 *.pyc
 __pycache__
+/last_christmas/config.yaml
