@@ -4,6 +4,8 @@ from django.views import generic
 
 from .models import MovieList, Movie
 
+from .omdbmovies import search_movie
+
 
 class IndexView(generic.ListView):
     context_object_name = 'movie_lists'
@@ -20,7 +22,8 @@ def add_list(request):
 
 def add_movie(request, movielist_id):
     current_list = MovieList.objects.get(id=movielist_id)
-    Movie.objects.create(title=request.POST['movie_title'], movielist=current_list)
+    movie_info = search_movie(request.POST['movie_title'])
+    Movie.objects.create(title=movie_info['Title'], year=movie_info['Year'], img_url=movie_info['Poster'], movielist=current_list)
     return redirect(reverse('christmasflix:detail', args=(current_list.id,)))
 
 

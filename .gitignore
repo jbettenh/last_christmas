@@ -4,3 +4,5 @@ venv/
 virtualenv/
 *.pyc
 __pycache__
+/christmasflix/config.yaml
+git
