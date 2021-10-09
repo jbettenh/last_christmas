@@ -6,15 +6,17 @@ BASE_URL = 'http://www.omdbapi.com/?t='
 NOT_FOUND = 'Not found'
 
 
-def search_movie():
-    with open("config.yaml", 'r') as ymlfile:
+def search_movie(term):
+    with open("C:\code\python3\last_christmas\christmasflix\config.yaml", 'r') as ymlfile:
         cfg = yaml.safe_load(ymlfile)
 
-    payload = {'apikey': cfg['api_key'], 't': 'a+christmas+carol'}
+    payload = {'apikey': cfg['api_key'], 't': term}
 
-    response = requests.get(BASE_URL, params=payload)
-    return response.text
+    return requests.get(BASE_URL, params=payload).json()
 
 
 if __name__ == '__main__':
-    print(search_movie())
+     movie_info = search_movie('a christmas carol')
+     print(f'Title {movie_info["Title"]}')
+     print(f'Year {movie_info["Year"]}')
+     print(movie_info)
