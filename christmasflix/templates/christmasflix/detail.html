@@ -6,7 +6,10 @@
 {% block table %}
             <ul>
                 {% for movie in movies.movie_set.all %}
-                <img src="{{ movie.img_url }}" alt="{{ movie.title }}">
+                <li>
+                    <img src="{{ movie.img_url }}" alt="{{ movie.title }}">
+                    <a class="btn btn-danger" href="{% url 'christmasflix:delete_movie' movie.id %}" role="button">Remove</a>
+                </li>
                 {% endfor %}
             </ul>
 {% endblock %}
