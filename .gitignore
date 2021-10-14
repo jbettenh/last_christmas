@@ -5,4 +5,5 @@ virtualenv/
 *.pyc
 __pycache__
 /christmasflix/config.yaml
+christmasflix/templates/christmasflix/delete.html
 git
