@@ -6,11 +6,28 @@
 
 {% block table %}
         {% if movie_lists %}
-            <ul>
-            {% for movie in movie_lists %}
-                <li><a href="{% url 'christmasflix:detail' movie.id %}">{{ movie }}</a></li>
-            {% endfor %}
-            </ul>
+            <table class="table">
+                <tr>
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">User</th>
+                            <th scope="col">Date Added</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         {% for movie in movie_lists %}
+                        <tr>
+                            <td><a href="{% url 'christmasflix:detail' movie.id %}">{{ movie }}</a></td>
+                            <td>{{ movie.created_date }} </td>
+                            <td><a class="btn btn-info" href="{% url 'christmasflix:detail' movie.id %}" role="button">Update</a></td>
+                            <td><a class="btn btn-danger" href="{% url 'christmasflix:delete_movie' movie.id %}" role="button">Delete</a></td>
+
+                        </tr>
+                         {% endfor %}
+                    </tbody>
+                </tr>
+            </table>
+
         {% else %}
             <p class="lead">>No lists are available.</p>
         {% endif %}
