@@ -12,15 +12,17 @@
                         <tr>
                             <th scope="col">User</th>
                             <th scope="col">Date Added</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                          {% for movie in movie_lists %}
                         <tr>
-                            <td><a href="{% url 'christmasflix:detail' movie.id %}">{{ movie }}</a></td>
+                            <td>{{ movie }}</td>
                             <td>{{ movie.created_date }} </td>
                             <td><a class="btn btn-info" href="{% url 'christmasflix:detail' movie.id %}" role="button">Update</a></td>
-                            <td><a class="btn btn-danger" href="{% url 'christmasflix:delete_movie' movie.id %}" role="button">Delete</a></td>
+                            <td><a class="btn btn-danger" href="{% url 'christmasflix:delete_list' movie.id %}" role="button">Delete</a></td>
 
                         </tr>
                          {% endfor %}

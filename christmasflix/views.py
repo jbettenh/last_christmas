@@ -20,10 +20,19 @@ def add_list(request):
     return redirect(reverse('christmasflix:detail', args=(new_list.id,)))
 
 
+def delete_list(request, list_id):
+    current_list = MovieList.objects.get(id=list_id)
+    current_list.delete()
+    return redirect(reverse('christmasflix:index'))
+
+
 def add_movie(request, movielist_id):
     current_list = MovieList.objects.get(id=movielist_id)
     movie_info = search_movie(request.POST['movie_title'])
-    Movie.objects.create(title=movie_info['Title'], year=movie_info['Year'], img_url=movie_info['Poster'], movielist=current_list)
+    Movie.objects.create(title=movie_info['Title'],
+                         year=movie_info['Year'],
+                         img_url=movie_info['Poster'],
+                         movielist=current_list)
     return redirect(reverse('christmasflix:detail', args=(current_list.id,)))
 
 
