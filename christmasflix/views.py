@@ -36,10 +36,10 @@ def add_movie(request, movielist_id):
     return redirect(reverse('christmasflix:detail', args=(current_list.id,)))
 
 
-def delete_movie(request, movie_id):
+def delete_movie(request, movielist_id, movie_id):
     current_movie = Movie.objects.get(id=movie_id)
     current_movie.delete()
-    return redirect(reverse('christmasflix:detail', args=(29,)))
+    return redirect(reverse('christmasflix:detail', args=(movielist_id,)))
 
 
 class DetailView(generic.DetailView):
