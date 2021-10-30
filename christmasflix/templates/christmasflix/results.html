@@ -1,0 +1,19 @@
+{% extends 'christmasflix/base.html' %}
+{% block header_text %}Found Movies{% endblock %}
+{% block form_placeholder %}Enter a another movie{% endblock %}
+
+{% block table %}
+            <ul>
+                {% for movie in movies %}
+                <li>
+                    <img src="{{ movie.Poster }}" alt="{{ movie.Title }}">
+
+                </li>
+
+                {% endfor %}
+            </ul>
+{% endblock %}
+
+{% block nav %}
+    <a class="btn btn-success" href="{% url 'christmasflix:index' %}" role="button">Back to Home</a>
+{% endblock %}

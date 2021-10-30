@@ -42,6 +42,16 @@ def delete_movie(request, movielist_id, movie_id):
     return redirect(reverse('christmasflix:detail', args=(movielist_id,)))
 
 
+class ResultsView(generic.ListView):
+    model = Movie
+    context_object_name = 'movies'
+    template_name = 'christmasflix/results.html'
+
+    def get_queryset(self):
+        search = search_movie(self.request.GET.get('movie_title'))
+        return search['Search']
+
+
 class DetailView(generic.DetailView):
     model = MovieList
     context_object_name = 'movies'
