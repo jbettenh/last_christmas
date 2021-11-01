@@ -52,9 +52,12 @@ class ResultsView(ListView):
 
 
 class MovieListView(ListView):
-    model = MovieList
+    model = Movie
     context_object_name = 'movies'
     template_name = 'christmasflix/movie_list.html'
+
+    def get_queryset(self, *args, **kwargs):
+        return Movie.objects.filter(movielist=self.kwargs['movielist_id'])
 
 
 class MoviesView(ListView):
