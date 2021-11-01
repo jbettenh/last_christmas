@@ -3,7 +3,6 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView
 
 from .models import MovieList, Movie
-
 from .omdbmovies import search_movie, get_movie_info
 
 
@@ -16,7 +15,7 @@ class IndexView(ListView):
 
 
 def add_list(request):
-    new_list = MovieList.objects.create(name=request.POST['movie_title'])
+    new_list = MovieList.objects.create(name=request.POST['user_request'])
     return redirect(reverse('christmasflix:movie_list', args=(new_list.id,)))
 
 
@@ -33,7 +32,6 @@ def add_movie(request, movielist_id, movie_title):
                          year=movie_info['Year'],
                          img_url=movie_info['Poster'],
                          movielist=current_list)
-
     return redirect(reverse('christmasflix:movie_list', args=(current_list.id,)))
 
 
@@ -49,7 +47,7 @@ class ResultsView(ListView):
     template_name = 'christmasflix/results.html'
 
     def get_queryset(self):
-        search = search_movie(self.request.GET.get('movie_title'))
+        search = search_movie(self.request.GET['user_request'])
         return search['Search']
 
 

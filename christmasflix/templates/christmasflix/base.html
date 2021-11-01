@@ -21,11 +21,11 @@
             <div class="row my-3">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="text-center">
-                        <form method="GET" action="{% block form_action %}}{% endblock %}">
-                            <input name="movie_title"
+                        <form method="{% block form_method %}{% endblock %}" action="{% block form_action %}{% endblock %}">
+                            <input name="user_request"
                                    id="id_new_movie"
                                    class="form-control input-lg"
-                                   placeholder="{% block form_placeholder %}}{% endblock %}"/>
+                                   placeholder="{% block form_placeholder %}{% endblock %}"/>
                             {% csrf_token %}
                         </form>
                     </div>
