@@ -2,11 +2,11 @@
 {% block header_text %} {{ movies }}'s Christmas Movie List{% endblock %}
 {% block form_placeholder %}Enter a another movie{% endblock %}
 {% block form_method %}GET{% endblock %}
-{% block form_action %}/christmasflix/44/results/{% endblock %}
+{% block form_action %}/christmasflix/{{ movies.id }}/results/{% endblock %}
 
 {% block table %}
             <ul>
-                {% for movie in movies %}
+                {% for movie in movies.movie_set.all %}
                 <li>
                     <img src="{{ movie.img_url }}" alt="{{ movie.title }}">
                 </li>

@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from .models import MovieList, Movie
 from .omdbmovies import search_movie, get_movie_info
@@ -60,13 +60,15 @@ def show_results(request, movielist_id):
     return render(request, 'christmasflix/results.html', {'movies': search['Search'], 'current_list': movielist_id})
 
 
-class MovieListView(ListView):
-    model = Movie
+class MovieListView(DetailView):
+    model = MovieList
     context_object_name = 'movies'
     template_name = 'christmasflix/movie_list.html'
 
-    def get_queryset(self, *args, **kwargs):
+    """
+        def get_queryset(self, *args, **kwargs):
         return Movie.objects.filter(movielist=self.kwargs['movielist_id'])
+    """
 
 
 class MoviesView(ListView):
