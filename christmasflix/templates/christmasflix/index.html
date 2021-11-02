@@ -2,6 +2,7 @@
 
 {% block header_text %}The Best Christmas Movies{% endblock %}
 {% block form_placeholder %}Start a new movie list{% endblock %}
+{% block form_method %}POST{% endblock %}
 {% block form_action %}/christmasflix/new/{% endblock %}
 
 {% block table %}
@@ -21,7 +22,7 @@
                         <tr>
                             <td>{{ movie }}</td>
                             <td>{{ movie.created_date }} </td>
-                            <td><a class="btn btn-info" href="{% url 'christmasflix:detail' movie.id %}" role="button">Update</a></td>
+                            <td><a class="btn btn-info" href="{% url 'christmasflix:movie_list' movie.id %}" role="button">Update</a></td>
                             <td><a class="btn btn-danger" href="{% url 'christmasflix:delete_list' movie.id %}" role="button">Delete</a></td>
 
                         </tr>

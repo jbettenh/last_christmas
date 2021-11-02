@@ -1,13 +1,12 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
-from django.views import generic
+from django.views.generic import ListView, DetailView
 
 from .models import MovieList, Movie
+from .omdbmovies import search_movie, get_movie_info
 
-from .omdbmovies import search_movie
 
-
-class IndexView(generic.ListView):
+class IndexView(ListView):
     context_object_name = 'movie_lists'
     template_name = 'christmasflix/index.html'
 
@@ -16,8 +15,8 @@ class IndexView(generic.ListView):
 
 
 def add_list(request):
-    new_list = MovieList.objects.create(name=request.POST['movie_title'])
-    return redirect(reverse('christmasflix:detail', args=(new_list.id,)))
+    new_list = MovieList.objects.create(name=request.POST['user_request'])
+    return redirect(reverse('christmasflix:movie_list', args=(new_list.id,)))
 
 
 def delete_list(request, list_id):
@@ -26,29 +25,53 @@ def delete_list(request, list_id):
     return redirect(reverse('christmasflix:index'))
 
 
-def add_movie(request, movielist_id):
+def add_movie(request, movielist_id, movie_title):
     current_list = MovieList.objects.get(id=movielist_id)
-    movie_info = search_movie(request.POST['movie_title'])
+    movie_info = get_movie_info(movie_title)
     Movie.objects.create(title=movie_info['Title'],
                          year=movie_info['Year'],
                          img_url=movie_info['Poster'],
                          movielist=current_list)
-    return redirect(reverse('christmasflix:detail', args=(current_list.id,)))
+    return redirect(reverse('christmasflix:movie_list', args=(current_list.id,)))
 
 
 def delete_movie(request, movielist_id, movie_id):
     current_movie = Movie.objects.get(id=movie_id)
     current_movie.delete()
-    return redirect(reverse('christmasflix:detail', args=(movielist_id,)))
+    return redirect(reverse('christmasflix:movie_list', args=(movielist_id,)))
+
+"""
+class ResultsView(ListView):
+    model = Movie
+    #context_object_name = 'movies'
+
+    template_name = 'christmasflix/results.html'
+
+    def get_queryset(self):
+        movielist_id = self.kwargs['movielist_id']
+        context_object_name = 'movielist_id'
+        search = search_movie(self.request.GET['user_request'])
+        return search['Search']
+"""
 
 
-class DetailView(generic.DetailView):
+def show_results(request, movielist_id):
+    search = search_movie(request.GET['user_request'])
+    return render(request, 'christmasflix/results.html', {'movies': search['Search'], 'current_list': movielist_id})
+
+
+class MovieListView(DetailView):
     model = MovieList
     context_object_name = 'movies'
-    template_name = 'christmasflix/detail.html'
+    template_name = 'christmasflix/movie_list.html'
+
+    """
+        def get_queryset(self, *args, **kwargs):
+        return Movie.objects.filter(movielist=self.kwargs['movielist_id'])
+    """
 
 
-class MoviesView(generic.ListView):
+class MoviesView(ListView):
     model = Movie
     context_object_name = 'movies'
     template_name = 'christmasflix/movies.html'
