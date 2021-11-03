@@ -4,7 +4,7 @@ Django app to create multiple movie lists.
 Uses [OMDB API](https://www.omdbapi.com/) to retrieve movie data.
 
 
-Features
+To Do: Features
 - [x] Show user search results
 - [ ] Switch to IMDB API
 - [ ] Allow user to add multiple movies from search results
