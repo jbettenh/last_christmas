@@ -39,6 +39,11 @@ class NewVistorTest(StaticLiveServerTestCase):
         self.assertEqual('Home Alone', self.browser.find_element(By.ID, 'movie-poster').get_attribute("alt"))
 
         # Select a movie
+        movie_button = self.browser.find_element(By.ID, 'movie-button')
+        movie_button.click()
+        time.sleep(DEMO_MODE)
+        self.assertEqual('Home Alone', self.browser.find_element(By.ID, 'movie-poster').get_attribute("alt"))
+
 
 
 
