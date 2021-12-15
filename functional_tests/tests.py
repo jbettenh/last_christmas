@@ -7,7 +7,7 @@ from selenium.common.exceptions import WebDriverException
 import time
 
 MAX_WAIT = 10
-DEMO_MODE = 7
+DEMO_MODE = 2
 
 
 class NewVistorTest(StaticLiveServerTestCase):
@@ -23,17 +23,18 @@ class NewVistorTest(StaticLiveServerTestCase):
         self.assertEqual('The Best Christmas Movies', self.browser.title)
 
         # He is asked to start a new list
-        inputbox = self.browser.find_element(By.ID, 'id_new_movie')
+        list_inputbox = self.browser.find_element(By.ID, 'id_new_movie')
 
-        inputbox.send_keys('Max Mustermann')
-      
-        inputbox.send_keys(Keys.ENTER)
+        list_inputbox.send_keys('Max Mustermann')
+
+        list_inputbox.send_keys(Keys.ENTER)
         time.sleep(DEMO_MODE)
+        self.assertEqual('Max Mustermann\'s Christmas Movie List', self.browser.find_element(By.CLASS_NAME, 'cover-heading').text)
 
         # Add movie
-        inputbox = self.browser.find_element(By.ID, 'id_new_movie')
-        inputbox.send_keys('Home Alone')
-        inputbox.send_keys(Keys.ENTER)
+        movie_inputbox = self.browser.find_element(By.ID, 'id_new_movie')
+        movie_inputbox.send_keys('Home Alone')
+        movie_inputbox.send_keys(Keys.ENTER)
         time.sleep(DEMO_MODE)
 
         # Select a movie
