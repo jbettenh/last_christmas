@@ -1,13 +1,17 @@
 {% extends 'christmasflix/base.html' %}
-{% block header_text %}All Movies{% endblock %}
+{% block header_text %}Found Movies{% endblock %}
 {% block form_placeholder %}Enter a another movie{% endblock %}
 
 {% block table %}
             <ul>
                 {% for movie in movies %}
                 <li>
-                    <img src="{{ movie.img_url }}" alt="{{ movie.title }}">
+                     <a id="movie-button" href="{% url 'christmasflix:add_movie' current_list movie.imdbID %}"
+                       role="button">
+                        <img id="movie-poster" src="{{ movie.Poster }}" alt="{{ movie.Title }}">
+                     </a>
                 </li>
+
                 {% endfor %}
             </ul>
 {% endblock %}
