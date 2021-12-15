@@ -29,14 +29,16 @@ class NewVistorTest(StaticLiveServerTestCase):
 
         list_inputbox.send_keys(Keys.ENTER)
         time.sleep(DEMO_MODE)
-        self.assertEqual('Max Mustermann\'s Christmas Movie List', self.browser.find_element(By.CLASS_NAME, 'cover-heading').text)
+        self.assertEqual('Max Mustermann\'s Christmas Movie List', self.browser.find_element(By.ID, 'list-title').text)
 
         # Add movie
         movie_inputbox = self.browser.find_element(By.ID, 'id_new_movie')
         movie_inputbox.send_keys('Home Alone')
         movie_inputbox.send_keys(Keys.ENTER)
         time.sleep(DEMO_MODE)
+        self.assertEqual('Home Alone', self.browser.find_element(By.ID, 'movie-poster').get_attribute("alt"))
 
         # Select a movie
+
 
 
