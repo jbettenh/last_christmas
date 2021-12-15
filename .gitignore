@@ -3,6 +3,7 @@ db.sqlite3
 /christmasflix/config.yaml
 christmasflix/templates/christmasflix/delete.html
 
+
 # pyenv
 .python-version
 
@@ -21,3 +22,6 @@ geckodriver.log
 
 # Test files
 **.pytest_cache
+
+
+
