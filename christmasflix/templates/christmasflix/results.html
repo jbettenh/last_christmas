@@ -6,9 +6,9 @@
             <ul>
                 {% for movie in movies %}
                 <li>
-                     <a href="{% url 'christmasflix:add_movie' current_list movie.imdbID %}"
+                     <a id="movie-button" href="{% url 'christmasflix:add_movie' current_list movie.imdbID %}"
                        role="button">
-                        <img src="{{ movie.Poster }}" alt="{{ movie.Title }}">
+                        <img id="movie-poster" src="{{ movie.Poster }}" alt="{{ movie.Title }}">
                      </a>
                 </li>
 

@@ -7,3 +7,5 @@ __pycache__
 /christmasflix/config.yaml
 christmasflix/templates/christmasflix/delete.html
 git
+geckodriver.exe
+geckodriver.log
