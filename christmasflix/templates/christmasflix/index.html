@@ -7,6 +7,7 @@
 
 {% block table %}
         {% if movie_lists %}
+            <div class="col-md-8 col-md-offset-2">
             <table class="table">
                 <tr>
                     <thead class="thead-light">
@@ -30,6 +31,7 @@
                     </tbody>
                 </tr>
             </table>
+            </div>
 
         {% else %}
             <p class="lead">>No lists are available.</p>
