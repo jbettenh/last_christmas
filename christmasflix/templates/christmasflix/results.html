@@ -3,17 +3,14 @@
 {% block form_placeholder %}Enter a another movie{% endblock %}
 
 {% block table %}
-            <ul>
-                {% for movie in movies %}
-                <li>
+
+            {% for movie in movies %}
                      <a id="movie-button" href="{% url 'christmasflix:add_movie' current_list movie.imdbID %}"
                        role="button">
                         <img id="movie-poster" src="{{ movie.Poster }}" alt="{{ movie.Title }}">
                      </a>
-                </li>
+            {% endfor %}
 
-                {% endfor %}
-            </ul>
 {% endblock %}
 
 {% block nav %}
