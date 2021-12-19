@@ -33,16 +33,16 @@ class NewVistorTest(StaticLiveServerTestCase):
 
         # Add movie
         movie_inputbox = self.browser.find_element(By.ID, 'id_new_movie')
-        movie_inputbox.send_keys('Home Alone')
+        movie_inputbox.send_keys('Die Hard')
         movie_inputbox.send_keys(Keys.ENTER)
         time.sleep(DEMO_MODE)
-        self.assertEqual('Home Alone', self.browser.find_element(By.ID, 'movie-poster').get_attribute("alt"))
+        self.assertEqual('Die Hard', self.browser.find_element(By.ID, 'movie-poster').get_attribute("alt"))
 
         # Select a movie
         movie_button = self.browser.find_element(By.ID, 'movie-button')
         movie_button.click()
         time.sleep(DEMO_MODE)
-        self.assertEqual('Home Alone', self.browser.find_element(By.ID, 'movie-poster').get_attribute("alt"))
+        self.assertEqual('Die Hard', self.browser.find_element(By.ID, 'movie-poster').get_attribute("alt"))
 
 
 
