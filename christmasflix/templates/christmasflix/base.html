@@ -10,16 +10,16 @@
         <link href="{% static 'christmasflix/base.css' %}" rel="stylesheet">
     </head>
     <body>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row my-3">
-                <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-12 col-md-offset-2">
                     <div class="text-center">
                         <h1 id="list-title" class="cover-heading lead">{% block header_text %}{% endblock %}</h1>
                     </div>
                 </div>
             </div>
             <div class="row my-3">
-                <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-3 col-md-offset-2">
                     <div class="text-center">
                         <form method="{% block form_method %}{% endblock %}" action="{% block form_action %}{% endblock %}">
                             <input name="user_request"

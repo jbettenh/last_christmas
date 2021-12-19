@@ -5,13 +5,11 @@
 {% block form_action %}/christmasflix/{{ movies.id }}/results/{% endblock %}
 
 {% block table %}
-            <ul>
                 {% for movie in movies.movie_set.all %}
-                <li>
+                <div class="image-container d-flex justify-content-start m-3">
                     <img src="{{ movie.img_url }}" alt="{{ movie.title }}">
-                </li>
+                </div>
                 {% endfor %}
-            </ul>
 {% endblock %}
 
 {% block nav %}
