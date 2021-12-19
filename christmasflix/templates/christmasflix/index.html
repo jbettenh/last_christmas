@@ -6,38 +6,40 @@
 {% block form_action %}/christmasflix/new/{% endblock %}
 
 {% block table %}
-        {% if movie_lists %}
-            <div class="col-md-8 col-md-offset-2">
-            <table class="table">
+    {% if movie_lists %}
+    <div class="col-lg-6 offset-lg-3">
+        <table class="table">
+            <tr>
+                <thead class="thead-light">
                 <tr>
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col">User</th>
-                            <th scope="col">Date Added</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                         {% for movie in movie_lists %}
-                        <tr>
-                            <td>{{ movie }}</td>
-                            <td>{{ movie.created_date }} </td>
-                            <td><a class="btn btn-info" href="{% url 'christmasflix:movie_list' movie.id %}" role="button">Update</a></td>
-                            <td><a class="btn btn-danger" href="{% url 'christmasflix:delete_list' movie.id %}" role="button">Delete</a></td>
-
-                        </tr>
-                         {% endfor %}
-                    </tbody>
+                    <th scope="col">User</th>
+                    <th scope="col">Date Added</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
-            </table>
-            </div>
+                </thead>
+                <tbody>
+                {% for movie in movie_lists %}
+                <tr>
+                    <td>{{ movie }}</td>
+                    <td>{{ movie.created_date }}</td>
+                    <td><a class="btn btn-info" href="{% url 'christmasflix:movie_list' movie.id %}" role="button">Update</a>
+                    </td>
+                    <td><a class="btn btn-danger" href="{% url 'christmasflix:delete_list' movie.id %}"
+                           role="button">Delete</a></td>
 
-        {% else %}
-            <p class="lead">>No lists are available.</p>
-        {% endif %}
+                </tr>
+                {% endfor %}
+                </tbody>
+            </tr>
+        </table>
+    </div>
+    {% else %}
+    <p class="lead">>No lists are available.</p>
+    {% endif %}
+
 {% endblock %}
 
 {% block nav %}
-    <a class="btn btn-success" href="{% url 'christmasflix:movies' %}" role="button">See all movies</a>
+<a class="btn btn-success" href="{% url 'christmasflix:movies' %}" role="button">See all movies</a>
 {% endblock %}

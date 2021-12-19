@@ -3,18 +3,16 @@
 {% block form_placeholder %}Enter a another movie{% endblock %}
 
 {% block table %}
-
-            {% for movie in movies %}
-                <div class="image-container d-flex justify-content-start m-3">
-                    <a id="movie-button" href="{% url 'christmasflix:add_movie' current_list movie.imdbID %}"
-                       role="button">
-                        <img id="movie-poster" src="{{ movie.Poster }}" alt="{{ movie.Title }}">
-                    </a>
-                </div>
-            {% endfor %}
-
+{% for movie in movies %}
+<div class="image-container d-flex justify-content-start m-3">
+    <a id="movie-button" href="{% url 'christmasflix:add_movie' current_list movie.imdbID %}"
+       role="button">
+        <img id="movie-poster" src="{{ movie.Poster }}" alt="{{ movie.Title }}">
+    </a>
+</div>
+{% endfor %}
 {% endblock %}
 
 {% block nav %}
-    <a class="btn btn-success" href="{% url 'christmasflix:index' %}" role="button">Back to Home</a>
+<a class="btn btn-success" href="{% url 'christmasflix:index' %}" role="button">Back to Home</a>
 {% endblock %}
