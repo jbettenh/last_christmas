@@ -1,23 +1,10 @@
-/*
- * Globals
- */
-
-/* Links */
-a,
-a:focus,
-a:hover {
-  color: #fff;
+:root {
+color-scheme: dark;
 }
 
-/*
- * Base structure
- */
-
-html,
 body {
-  /*height: 100%;*/
   background-color: #141414;
-  color: #ffffff;
+  color: #FFFFFF;
 }
 
 .movie-app > .row {
@@ -55,22 +42,3 @@ body {
 ul {
     list-style-type: none;
 }
-
-/*
-body {
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  -ms-flex-pack: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  color: #fff;
-  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-}
-.cover-container {
-  max-width: 42em;
-}
-
- */
-
