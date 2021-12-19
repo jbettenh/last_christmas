@@ -9,7 +9,7 @@ class MovieListIndexViewTests(TestCase):
         response = self.client.get(reverse('christmasflix:index'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "No movies are available")
-        self.assertQuerysetEqual(response.context['movie_lists'],[])
+        self.assertQuerysetEqual(response.context['movie_lists'], [])
 
     def test_one_movie_list(self):
         mylist1 = MovieList.objects.create(name="mylist1")
