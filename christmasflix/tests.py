@@ -37,7 +37,7 @@ class DetailViewTest(TestCase):
         my_list = MovieList.objects.create()
         response = self.client.get(f'/christmasflix/{my_list.id}/')
 
-        self.assertTemplateUsed(response, 'christmasflix/detail.html')
+        self.assertTemplateUsed(response, 'christmasflix/movie_list.html')
 
 
 class MovieViewTest(TestCase):
