@@ -3,13 +3,11 @@
 {% block form_placeholder %}Enter a another movie{% endblock %}
 
 {% block table %}
-            <ul>
                 {% for movie in movies %}
-                <li>
-                    <img src="{{ movie.img_url }}" alt="{{ movie.title }}">
-                </li>
+                    <div class="image-container d-flex justify-content-start m-3">
+                        <img src="{{ movie.img_url }}" alt="{{ movie.title }}">
+                    </div>
                 {% endfor %}
-            </ul>
 {% endblock %}
 
 {% block nav %}
