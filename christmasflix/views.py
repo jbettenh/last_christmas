@@ -40,24 +40,13 @@ def delete_movie(request, movielist_id, movie_id):
     current_movie.delete()
     return redirect(reverse('christmasflix:movie_list', args=(movielist_id,)))
 
-"""
-class ResultsView(ListView):
-    model = Movie
-    #context_object_name = 'movies'
-
-    template_name = 'christmasflix/results.html'
-
-    def get_queryset(self):
-        movielist_id = self.kwargs['movielist_id']
-        context_object_name = 'movielist_id'
-        search = search_movie(self.request.GET['user_request'])
-        return search['Search']
-"""
-
 
 def show_results(request, movielist_id):
     search = search_movie(request.GET['user_request'])
-    return render(request, 'christmasflix/results.html', {'movies': search['Search'], 'current_list': movielist_id})
+    if 'Error' in search:
+        return render(request, 'christmasflix/results.html', {'movies': search['Error'], 'current_list': movielist_id})
+    else:
+        return render(request, 'christmasflix/results.html', {'movies': search['Search'], 'current_list': movielist_id})
 
 
 class MovieListView(DetailView):

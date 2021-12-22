@@ -11,7 +11,9 @@ def search_movie(term):
 
     payload = {'apikey': cfg['api_key'], 's': term}
 
-    return requests.get(BASE_URL, params=payload).json()
+    data = requests.get(BASE_URL, params=payload).json()
+
+    return data
 
 
 def get_movie_info(movie_id):
@@ -24,10 +26,17 @@ def get_movie_info(movie_id):
 
 
 if __name__ == '__main__':
-    movie_info = search_movie('home alone')
-    for movie in movie_info['Search']:
-        print(movie['Title'], movie['imdbID'])
+    movie_info = search_movie('asdasdfc')
 
-    one_movie = get_movie_info('tt0099785')
-    print(one_movie)
+    if 'Error' in movie_info:
+        print(movie_info['Error'])
+    else:
+        for movie in movie_info['Search']:
+            print(movie['Title'], movie['imdbID'])
+
+        one_movie = get_movie_info(movie['imdbID'])
+        print(one_movie)
+
+
+
 
