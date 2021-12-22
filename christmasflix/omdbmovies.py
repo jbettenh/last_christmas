@@ -27,7 +27,7 @@ def get_movie_info(movie_id):
 
 if __name__ == '__main__':
     movie_info = search_movie('asdasdfc')
-
+    print(movie_info)
     if 'Error' in movie_info:
         print(movie_info['Error'])
     else:

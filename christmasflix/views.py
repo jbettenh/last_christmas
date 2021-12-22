@@ -43,10 +43,10 @@ def delete_movie(request, movielist_id, movie_id):
 
 def show_results(request, movielist_id):
     search = search_movie(request.GET['user_request'])
-    if 'Error' in search:
-        return render(request, 'christmasflix/results.html', {'movies': search['Error'], 'current_list': movielist_id})
-    else:
+    if 'Error' not in search:
         return render(request, 'christmasflix/results.html', {'movies': search['Search'], 'current_list': movielist_id})
+    else:
+        return render(request, 'christmasflix/results.html', {'movies': search['Error'], 'current_list': movielist_id})
 
 
 class MovieListView(DetailView):
