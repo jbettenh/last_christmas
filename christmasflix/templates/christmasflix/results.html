@@ -3,6 +3,7 @@
 {% block form_placeholder %}Enter a another movie{% endblock %}
 
 {% block table %}
+{% if movies != "Movie not found!" %}
 {% for movie in movies %}
 <div class="image-container d-flex justify-content-start m-3">
     <a id="movie-button" href="{% url 'christmasflix:add_movie' current_list movie.imdbID %}"
@@ -11,6 +12,9 @@
     </a>
 </div>
 {% endfor %}
+{% else %}
+<p class="lead">No movies found. Please try another search.</p>
+{% endif %}
 {% endblock %}
 
 {% block nav %}

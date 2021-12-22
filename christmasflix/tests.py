@@ -2,13 +2,14 @@ from django.test import TestCase
 from django.shortcuts import reverse
 
 from .models import MovieList
+from christmasflix import omdbmovies
 
 
 class MovieListIndexViewTests(TestCase):
     def test_no_lists(self):
         response = self.client.get(reverse('christmasflix:index'))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "No movies are available")
+        self.assertContains(response, "No lists are available.")
         self.assertQuerysetEqual(response.context['movie_lists'], [])
 
     def test_one_movie_list(self):
@@ -45,3 +46,10 @@ class MovieViewTest(TestCase):
         response = self.client.get(f'/christmasflix/movies/')
 
         self.assertTemplateUsed(response, 'christmasflix/movies.html')
+
+
+class MovieResultsTest(TestCase):
+    def test_no_movie_found(self):
+        # asdasdfc
+        omdbmovies.search_movie("Die Hard")
+        self.assertRaises(KeyError)
