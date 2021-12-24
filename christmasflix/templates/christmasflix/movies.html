@@ -5,7 +5,7 @@
 {% block table %}
 {% for movie in movies %}
 <div class="image-container d-flex justify-content-start m-3">
-    <img src="{{ movie.img_url }}" alt="{{ movie.title }}">
+    <img id="movie-poster" src="{{ movie.img_url }}" alt="{{ movie.title }}">
 </div>
 {% endfor %}
 {% endblock %}
