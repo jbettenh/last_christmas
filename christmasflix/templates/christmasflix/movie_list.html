@@ -10,8 +10,8 @@
     <div class="row">
         <img id="movie-poster" src="{{ movie.img_url }}" alt="{{ movie.title }}">
     </div>
-    <div class="row my-2 justify-content-center">
-      <a class="btn btn-danger" role="button">Remove</a>
+    <div class="row justify-content-start my-2">
+      <a class="btn btn-danger" href="{% url 'christmasflix:delete_movie' movies.id movie.id %}" role="button">Remove</a>
     </div>
 </div>
 {% endfor %}
