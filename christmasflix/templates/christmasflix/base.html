@@ -1,48 +1,93 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>The Best Christmas Movies</title>
-    <link href="{% static 'christmasflix/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'christmasflix/base.css' %}" rel="stylesheet">
-</head>
-<body>
-<div class="container-fluid">
-    <div class="row my-3">
+    <link
+      href="{% static 'christmasflix/bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+    <link href="{% static 'christmasflix/base.css' %}" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{% url 'christmasflix:index' %}"
+            >Christmasflix</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarToggle"
+            aria-controls="navbarToggle"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a
+                class="nav-item nav-link"
+                href="{% url 'christmasflix:index' %}"
+                >Home</a
+              >
+              <a
+                class="nav-item nav-link"
+                href="{% url 'christmasflix:movies' %}"
+                >Movies</a
+              >
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              {% if user.is_authenticated %}
+              <a class="nav-item nav-link" href="#">Profile</a>
+              <a class="nav-item nav-link" href="#">Logout</a>
+              {% else %}
+              <a class="nav-item nav-link" href="#">Login</a>
+              <a class="nav-item nav-link" href="#">Register</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container-fluid">
+      <div class="row my-3">
         <div class="col-md-12 col-md-offset-2">
-            <div class="text-center">
-                <h1 id="list-title" class="cover-heading lead">{% block header_text %}{% endblock %}</h1>
-            </div>
+          <div class="text-center">
+            <h1 id="list-title" class="cover-heading lead">
+              {% block header_text %}{% endblock %}
+            </h1>
+          </div>
         </div>
-    </div>
-    <div class="row my-3">
+      </div>
+      <div class="row my-3">
         <div class="col-lg-6 offset-lg-3">
-            <div class="text-center">
-                <form method="{% block form_method %}{% endblock %}" action="{% block form_action %}{% endblock %}">
-                    <input name="user_request"
-                           id="id_new_movie"
-                           class="form-control input-lg"
-                           placeholder="{% block form_placeholder %}{% endblock %}"/>
-                    {% csrf_token %}
-                </form>
-            </div>
+          <div class="text-center">
+            <form
+              method="{% block form_method %}{% endblock %}"
+              action="{% block form_action %}{% endblock %}"
+            >
+              <input
+                name="user_request"
+                id="id_new_movie"
+                class="form-control input-lg"
+                placeholder="{% block form_placeholder %}{% endblock %}"
+              />
+              {% csrf_token %}
+            </form>
+          </div>
         </div>
+      </div>
+      <div class="container-fluid movie-app">
+        <div class="row my-3">{% block table %} {% endblock %}</div>
+      </div>
     </div>
-    <div class="container-fluid movie-app">
-        <div class="row my-3">
-            {% block table %}
-            {% endblock %}
-        </div>
-    </div>
-    <div class="row my-3">
-        <div class="col-lg-6 offset-lg-3">
-            {% block nav %}
-            {% endblock %}
-        </div>
-    </div>
-</div>
-</body>
+  </body>
 </html>
