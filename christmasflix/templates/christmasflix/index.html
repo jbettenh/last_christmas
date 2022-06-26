@@ -1,48 +1,64 @@
 {% extends 'christmasflix/base.html' %}
-{% block header_text %}The Best Christmas Movies{% endblock %}
-{% block form_placeholder %}Start a new movielist{% endblock %}
-{% block form_method %}POST{% endblock %}
-{% block form_action %}/christmasflix/new/{% endblock %} 
-{% block table %} {% if movie_lists %}
-<div class="col-lg-6 offset-lg-3">
-  <table class="table">
-    <tr>
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">User</th>
-          <th scope="col">Date Added</th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for movie in movie_lists %}
-        <tr>
-          <td>{{ movie }}</td>
-          <td>{{ movie.created_date }}</td>
-          <td>
-            <a
-              class="btn btn-info"
-              href="{% url 'christmasflix:movie_list' movie.id %}"
-              role="button"
-              >Update</a
-            >
-          </td>
-          <td>
-            <a
-              class="btn btn-danger"
-              href="{% url 'christmasflix:delete_list' movie.id %}"
-              role="button"
-              >Delete</a
-            >
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </tr>
-  </table>
-</div>
-{% else %}
-<p class="lead">No lists are available.</p>
-{% endif %} 
+
+{% block content %} 
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <form
+        method="POST"
+        action="/christmasflix/new/">
+        {% csrf_token %}
+        <input
+          name="user_request"
+          id="id_new_movie"
+          class="form-control input-lg"
+          placeholder="Start a new movielist"
+        />
+                    
+      </form>
+    </div>
+  </div>
+  {% if movie_lists %}
+    <div class="row pt-3">
+      <div class="col-md-8 offset-md-2">
+        <table class="table">
+          <tr>
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">User</th>
+                <th scope="col">Date Added</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for movie in movie_lists %}
+              <tr>
+                <td>{{ movie }}</td>
+                <td>{{ movie.created_date }}</td>
+                <td>
+                  <a
+                    class="btn btn-outline-info"
+                    href="{% url 'christmasflix:movie_list' movie.id %}"
+                    role="button"
+                    >Update</a
+                  >
+                </td>
+                <td>
+                  <a
+                    class="btn btn-outline-danger"
+                    href="{% url 'christmasflix:delete_list' movie.id %}"
+                    role="button"
+                    >Delete</a
+                  >
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </tr>
+        </table>
+      </div>
+    </div>
+  {% else %}
+    <p class="lead">No lists are available.</p>
+  {% endif %} 
 {% endblock %}

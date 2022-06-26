@@ -41,6 +41,8 @@ else:
 
 INSTALLED_APPS = [
     'christmasflix.apps.ChristmasflixConfig',
+    'users.apps.UsersConfig',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -139,7 +141,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-""" if 'heroku' == os.environ.get('HOME'):
-    django_heroku.settings(locals()) """
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+LOGIN_REDIRECT_URL = 'christmasflix:index'
+LOGIN_URL = 'login'
+
+# Deployment to Heroku
 django_on_heroku.settings(locals())

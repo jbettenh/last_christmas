@@ -5,7 +5,16 @@ color-scheme: dark;
 body {
   background-color: #141414;
   color: #FFFFFF;
+  margin-top: 5rem;
 }
+
+.content-section {
+	background: #141414;
+	padding: 10px 20px;
+	border: 1px solid #dddddd;
+	border-radius: 3px;
+	margin-bottom: 20px;
+  }
 
 .movie-app > .row {
 	overflow-x: auto;
