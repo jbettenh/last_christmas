@@ -7,6 +7,7 @@ class MovieList(models.Model):
     name = models.CharField(max_length=50, default='')
     description = models.CharField(max_length=200, default='')
     created_date = models.DateTimeField('date created', auto_now_add=True)
+    author = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
     list_filter = ['created_date']
 
@@ -19,7 +20,7 @@ class Movie(models.Model):
     title = models.TextField(default='')
     year = models.TextField(default='1900')
     img_url = models.TextField(default='')
-    movielist = models.ForeignKey(MovieList, default=None, on_delete=models.CASCADE,)
+    movielist = models.ForeignKey(MovieList, default=None, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

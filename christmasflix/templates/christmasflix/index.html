@@ -35,7 +35,7 @@
               {% for movie in movie_lists %}
               <tr>
                 <td>{{ movie }}</td>
-                <td></td>
+                <td>{{ movie.author }}</td>
                 <td>{{ movie.created_date|date:"F j, Y" }}</td>
                 <td>
                   <a
