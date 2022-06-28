@@ -18,7 +18,6 @@ christmasflix/templates/christmasflix/delete.html
 virtualenv/
 /.idea/*
 staticfiles/**
-config.yaml
 .env
 geckodriver.exe
 geckodriver.log
