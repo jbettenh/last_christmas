@@ -25,6 +25,7 @@ geckodriver.log
 
 # Test files
 **.pytest_cache
+media
 
 # Computer files
 .DS_Store

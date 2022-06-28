@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView
-
+from django.contrib.auth.decorators import login_required
 from .models import MovieList, Movie
 from .omdbmovies import search_movie, get_movie_info
 
@@ -19,12 +19,14 @@ def add_list(request):
     return redirect(reverse('christmasflix:movie_list', args=(new_list.id,)))
 
 
+@login_required()
 def delete_list(request, list_id):
     current_list = MovieList.objects.get(id=list_id)
     current_list.delete()
     return redirect(reverse('christmasflix:index'))
 
 
+@login_required()
 def add_movie(request, movielist_id, movie_title):
     current_list = MovieList.objects.get(id=movielist_id)
     movie_info = get_movie_info(movie_title)
@@ -35,6 +37,7 @@ def add_movie(request, movielist_id, movie_title):
     return redirect(reverse('christmasflix:movie_list', args=(current_list.id,)))
 
 
+@login_required()
 def delete_movie(request, movielist_id, movie_id):
     current_movie = Movie.objects.get(id=movie_id)
     current_movie.delete()
