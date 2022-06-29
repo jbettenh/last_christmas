@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import ListView, DetailView
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView, DetailView
 from .models import MovieList, Movie
 from .omdbmovies import search_movie, get_movie_info
 
@@ -14,8 +14,9 @@ class IndexView(ListView):
         return MovieList.objects.all()
 
 
+@login_required()
 def add_list(request):
-    new_list = MovieList.objects.create(name=request.POST['user_request'])
+    new_list = MovieList.objects.create(name=request.POST['user_request'], author=request.user)
     return redirect(reverse('christmasflix:movie_list', args=(new_list.id,)))
 
 

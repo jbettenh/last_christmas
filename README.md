@@ -19,7 +19,3 @@ Die Hard, Home Alone, Elf, National Lampoon's Christmas Vacation
 
 ## License
 MIT License
-
-## To Do: Features
-- [ ] Allow user to add multiple movies from search results
-- [ ] Share movie list via email
