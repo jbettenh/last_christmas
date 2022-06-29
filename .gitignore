@@ -17,11 +17,15 @@ christmasflix/templates/christmasflix/delete.html
 /venv/*
 virtualenv/
 /.idea/*
+staticfiles/**
+.env
 geckodriver.exe
 geckodriver.log
 
 # Test files
 **.pytest_cache
+media
 
-
+# Computer files
+.DS_Store
 

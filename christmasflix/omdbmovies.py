@@ -1,15 +1,13 @@
+import os
 import requests
-import yaml
 
 BASE_URL = 'http://www.omdbapi.com/'
 NOT_FOUND = 'Not found'
 
 
 def search_movie(term):
-    with open("C:\code\python3\last_christmas\christmasflix\config.yaml", 'r') as ymlfile:
-        cfg = yaml.safe_load(ymlfile)
 
-    payload = {'apikey': cfg['api_key'], 's': term}
+    payload = {'apikey': os.environ['OMDB_API_KEY'], 's': term}
 
     data = requests.get(BASE_URL, params=payload).json()
 
@@ -17,10 +15,8 @@ def search_movie(term):
 
 
 def get_movie_info(movie_id):
-    with open("C:\code\python3\last_christmas\christmasflix\config.yaml", 'r') as ymlfile:
-        cfg = yaml.safe_load(ymlfile)
 
-    payload = {'apikey': cfg['api_key'], 'i': movie_id}
+    payload = {'apikey': os.environ['OMDB_API_KEY'], 'i': movie_id}
 
     return requests.get(BASE_URL, params=payload).json()
 
