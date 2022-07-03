@@ -4,6 +4,9 @@ from django.shortcuts import reverse
 from .models import MovieList
 from christmasflix import omdbmovies
 
+def test_version():
+    assert __version__ == '1.1.0'
+
 
 class MovieListIndexViewTests(TestCase):
     def test_no_lists(self):
@@ -50,6 +53,5 @@ class MovieViewTest(TestCase):
 
 class MovieResultsTest(TestCase):
     def test_no_movie_found(self):
-        # asdasdfc
-        omdbmovies.search_movie("Die Hard")
+        omdbmovies.search_movie("asdasdfc")
         self.assertRaises(KeyError)
