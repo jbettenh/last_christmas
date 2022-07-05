@@ -1,39 +1,35 @@
 import os
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import WebDriverException
+from seleniumlogin import force_login
 import time
 
 MAX_WAIT = 10
-DEMO_MODE = 5
+DEMO_MODE = 1
 
 
-# fixme not working in github actions only locally
-
-""" class NewVistorTest(StaticLiveServerTestCase):
+class NewVistorTest(StaticLiveServerTestCase):
     def setUp(self):
-        #options = webdriver.FirefoxOptions()
-        #options.add_argument("--headless")
-        #self.browser = webdriver.Firefox(options=options)
-        
-        #self.client.login(username='tester', password='testing321')
-        self.user = User.objects.create_superuser(username='tester', password='testing321')
-        self.client.force_login(self.user)
-        self.browser = webdriver.Firefox()
-        time.sleep(DEMO_MODE)
-        self.browser.get(self.live_server_url)
-        
+        options = webdriver.FirefoxOptions()
+        options.add_argument("--headless")
+        self.browser = webdriver.Firefox(options=options)
 
 
     def tearDown(self):
         self.browser.quit()
-
+        
 
     def test_can_start_a_list_for_one_user(self):
-        self.client.get('christmasflix/')
+        User = get_user_model()
+        user = User.objects.create_user(username='tester', password='testing321')
+        force_login(user, self.browser, self.live_server_url)
+        self.browser.get('{}/christmasflix/'.format(self.live_server_url))
+        time.sleep(DEMO_MODE)
 
         self.assertEqual('The Best Christmas Movies', self.browser.title)
 
@@ -41,7 +37,7 @@ DEMO_MODE = 5
         list_inputbox = self.browser.find_element(By.ID, 'id_new_movie')
 
         list_inputbox.send_keys('Max Mustermann')
-
+        time.sleep(DEMO_MODE)
         list_inputbox.send_keys(Keys.ENTER)
         time.sleep(DEMO_MODE)
         #self.assertEqual('Max Mustermann\'s Christmas Movie List', self.browser.find_element(By.ID, 'list-title').text)
@@ -49,6 +45,7 @@ DEMO_MODE = 5
         # Add movie
         movie_inputbox = self.browser.find_element(By.ID, 'id_new_movie')
         movie_inputbox.send_keys('Die Hard')
+        time.sleep(DEMO_MODE)
         movie_inputbox.send_keys(Keys.ENTER)
         time.sleep(DEMO_MODE)
         self.assertEqual('Die Hard', self.browser.find_element(By.ID, 'movie-poster').get_attribute("alt"))
@@ -58,6 +55,5 @@ DEMO_MODE = 5
         movie_button.click()
         time.sleep(DEMO_MODE)
         self.assertEqual('Die Hard', self.browser.find_element(By.ID, 'movie-poster').get_attribute("alt"))
- """
 
 
