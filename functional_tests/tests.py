@@ -15,9 +15,9 @@ DEMO_MODE = 1
 
 class NewVistorTest(StaticLiveServerTestCase):
     def setUp(self):
-        options = webdriver.FirefoxOptions()
-        options.add_argument("--headless")
-        self.browser = webdriver.Firefox(options=options)
+        options = webdriver.ChromeOptions()
+        options.headless = True
+        self.browser = webdriver.Chrome(chrome_options=options)
 
 
     def tearDown(self):
