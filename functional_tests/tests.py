@@ -1,11 +1,8 @@
-import os
-from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from django.contrib.staticfiles.testing import LiveServerTestCase
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import WebDriverException
 from seleniumlogin import force_login
 import time
 
@@ -13,7 +10,7 @@ MAX_WAIT = 10
 DEMO_MODE = 1
 
 
-class NewVistorTest(StaticLiveServerTestCase):
+class NewVistorTest(LiveServerTestCase):
     def setUp(self):
         options = webdriver.ChromeOptions()
         options.headless = True
