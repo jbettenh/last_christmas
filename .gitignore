@@ -21,6 +21,7 @@ staticfiles/**
 .env
 geckodriver.exe
 geckodriver.log
+chromedriver.exe
 
 # Test files
 **.pytest_cache
