@@ -1,11 +1,7 @@
-{% extends 'christmasflix/base.html' %}
-
-{% block content %}
+{% extends 'christmasflix/base.html' %} {% block content %}
 <div class="row">
   <div class="col-md-8 offset-md-2">
-    <form
-      method="GET"
-      action="/christmasflix/{{ movies.id }}/results/">
+    <form method="GET" action="/christmasflix/{{ movies.id }}/results/">
       {% csrf_token %}
       <input
         name="user_request"
@@ -13,19 +9,33 @@
         class="form-control input-lg"
         placeholder="Enter a another movie"
       />
-                  
     </form>
   </div>
 </div>
 
-{% for movie in movies.movie_set.all %}
-<div class="container-fluid image-container justify-content-start m-3">
-    <div class="row">
-        <img id="movie-poster" src="{{ movie.img_url }}" alt="{{ movie.title }}">
+<div
+  class="movie-app justify-content-start m-3"
+>
+  <div class="row my-3">
+    {% for movie in movies.movie_set.all %}
+    <div class="col mx-2 image-container">
+      <div class="row justify-content-start my-2">
+        <img
+          id="movie-poster"
+          src="{{ movie.img_url }}"
+          alt="{{ movie.title }}"
+        />
+      </div>
+      <div class="row justify-content-start my-3">
+        <a
+          class="btn btn-outline-danger"
+          href="{% url 'christmasflix:delete_movie' movies.id movie.id %}"
+          role="button"
+          >Remove</a
+        >
+      </div>
     </div>
-    <div class="row justify-content-start my-2">
-      <a class="btn btn-outline-danger" href="{% url 'christmasflix:delete_movie' movies.id movie.id %}" role="button">Remove</a>
-    </div>
+    {% endfor %}
+  </div>
 </div>
-{% endfor %}
 {% endblock %}

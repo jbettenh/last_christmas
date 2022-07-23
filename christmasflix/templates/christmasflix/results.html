@@ -1,17 +1,28 @@
-{% extends 'christmasflix/base.html' %}
-
-{% block content %}
-{% if movies != "Movie not found!" %}
-
-{% for movie in movies %}
-<div class="image-container d-flex justify-content-start m-3">
-    <a id="movie-button" href="{% url 'christmasflix:add_movie' current_list movie.imdbID %}"
-       role="button">
-        <img id="movie-poster" src="{{ movie.Poster }}" alt="{{ movie.Title }}">
-    </a>
-</div>
-{% endfor %}
-{% else %}
-<p class="lead">No movies found. Please try another search.</p>
-{% endif %}
+{% extends 'christmasflix/base.html' %} 
+{% block content %} 
+    {% if movies != "Movie not found!" %}
+        <div class="movie-app justify-content-start m-3">
+            <div class="row my-3">
+                {% for movie in movies %}
+                <div class="col mx-2 image-container">
+                <div class="row justify-content-start my-2">
+                    <a
+                    id="movie-button"
+                    href="{% url 'christmasflix:add_movie' current_list movie.imdbID %}"
+                    role="button"
+                    >
+                    <img
+                        id="movie-poster"
+                        src="{{ movie.Poster }}"
+                        alt="{{ movie.Title }}"
+                    />
+                    </a>
+                </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <p class="lead">No movies found. Please try another search.</p>
+    {% endif %} 
 {% endblock %}
