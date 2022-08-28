@@ -1,4 +1,7 @@
 # Christmasflix
+[![codecov](https://codecov.io/gh/jbettenh/last_christmas/branch/trunk/graph/badge.svg?token=24Z2GBQWVE)](https://codecov.io/gh/jbettenh/last_christmas)
+![django workflow](https://github.com/jbettenh/last_christmas/actions/workflows/django.yml/badge.svg)
+
 A Django app to create multiple movie lists.
 
 

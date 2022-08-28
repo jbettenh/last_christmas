@@ -7,9 +7,13 @@ from selenium.webdriver.common.keys import Keys
 from seleniumlogin import force_login
 import time
 
+from last_christmas import __version__
+
 MAX_WAIT = 10
 DEMO_MODE = 1
 
+def test_version():
+    assert __version__ == '1.2.0'
 
 class NewVistorTest(LiveServerTestCase):
     def setUp(self):

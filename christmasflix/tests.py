@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.shortcuts import reverse
 
 from .models import MovieList
-from christmasflix import omdbmovies
+from christmasflix import omdbmovies, __version__
 
 def test_version():
     assert __version__ == '1.1.0'
