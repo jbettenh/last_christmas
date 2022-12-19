@@ -22,6 +22,3 @@ Die Hard, Home Alone, Elf, National Lampoon's Christmas Vacation
 
 ## License
 MIT License
-
-## Live Demo
-[Christmasflix deployed on Heroku](https://christmasflix.herokuapp.com/)
