@@ -12,4 +12,4 @@ services:
       - key: DEBUG_VALUE # Imported from Heroku app
         value: False
       - key: HOME # Imported from Heroku app
-        value: heroku
+        value: render
